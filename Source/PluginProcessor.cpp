@@ -191,9 +191,9 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 
 juce::AudioProcessorValueTreeState::ParameterLayout ComboboxBugAudioProcessor::createParams()
 {
-    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-    
-    params.push_back(std::make_unique<juce::AudioParameterChoice>("LIST", "List", choices, 0));
-    
-    return { params.begin(), params.end() };
+    juce::AudioProcessorValueTreeState::ParameterLayout layout;
+
+    layout.add(std::make_unique<juce::AudioParameterInt>("LIST", "List", 1, 3, 2));
+
+    return layout;
 }
